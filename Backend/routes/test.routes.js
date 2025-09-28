@@ -10,6 +10,10 @@ import {
 
 const router = Router();
 
+router.get("/", (req, res) => {
+  res.status(200).json({ message: "Test route is working!" });
+});
+
 router.post("/createTest", upload.single("file"), processCSV);
 router.get("/getAllTests", getAllTests);
 router.get("/search", search);
