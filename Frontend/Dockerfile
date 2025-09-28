@@ -1,28 +1,16 @@
-# Stage 1 - Build frontend
+# Stage 1 - Build frontend (can be done on modern machine)
 FROM node:18-alpine AS build
-
 WORKDIR /app
-
 COPY package*.json ./
 RUN npm install
-
 COPY . .
-
-# Accept BASE_URL as build arg (since Vite ignores runtime .env)
 ARG VITE_BASE_URL
 ENV VITE_BASE_URL=$VITE_BASE_URL
-
 RUN npm run build
 
 # Stage 2 - Serve with nginx
 FROM nginx:alpine
-
-# Copy build output
 COPY --from=build /app/dist /usr/share/nginx/html
-
-# Copy custom nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]
