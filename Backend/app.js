@@ -6,7 +6,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://nss.iitr.ac.in/jee", "http://localhost:4173"],
+    origin: ["http://localhost:5173", "http://localhost:5180", "https://nss.iitr.ac.in/jee", "http://localhost:4173"],
     credentials: true,
   })
 );
