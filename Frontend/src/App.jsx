@@ -8,7 +8,7 @@ import NotFound from "./pages/NotFound";
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter basename="/jee">
         <Routes>
           <Route path="/" element={<UserPage />} />
           <Route path="/adminPage" element={<AdminPage/>} />

@@ -8,9 +8,9 @@ ARG VITE_BASE_URL
 ENV VITE_BASE_URL=$VITE_BASE_URL
 RUN npm run build
 
-# Stage 2 - Serve with nginx
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Stage 2 - Serve with serve package
+FROM node:18-alpine
+COPY --from=build /app/dist /app/dist
+RUN npm install -g serve
+EXPOSE 6000
+CMD ["serve", "-s", "/app/dist", "-l", "6000"]

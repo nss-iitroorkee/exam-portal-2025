@@ -18,7 +18,7 @@ services:
       args:
         VITE_BASE_URL: ${VITE_BASE_URL:-https://nss.iitr.ac.in/jee/api}
     ports:
-      - "5180:80"
+      - "5180:6000"
     depends_on:
       - backend
     restart: unless-stopped

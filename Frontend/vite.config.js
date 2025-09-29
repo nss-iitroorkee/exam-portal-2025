@@ -4,6 +4,14 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/jee/',
   plugins: [react(), tailwindcss()],
+  base: "/jee/",
+  server: {
+    host: true,
+    port: 6000
+  },
+  preview: {
+    host: true,
+    port: 6000
+  }
 });
