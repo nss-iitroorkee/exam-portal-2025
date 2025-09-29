@@ -13,4 +13,5 @@ FROM node:18-alpine
 COPY --from=build /app/dist /app/dist
 RUN npm install -g serve
 EXPOSE 6000
-CMD ["serve", "-s", "/app/dist", "-l", "6000"]
+# Add --single flag for SPA routing and configure for subpath
+CMD ["serve", "-s", "/app/dist", "-l", "6000", "--single"]
